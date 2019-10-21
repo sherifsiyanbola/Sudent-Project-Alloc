@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ project.name }}
+{% endblock title %}
+
+{% block content %}
+
+<div class="container main-part">
+
+{% if  projects %}
+{% for project in projects %}
+
+    <div class="card boy-card">
+      <div class="card-header">
+        <a href="" class="text-white header-link"
+          ><i class="fas fa-mars mr-2"></i> <span>Student Name: <br></span>{{project.name}} </a>
+      </div>
+      <div class="card-body pb-0">
+        <p>
+          <i class="fas fa-at mr-2"></i> <span>Email: <br></span>
+          <a href="mailto:{{project.email}}">{{project.email}}</a>
+        </p>
+        <p><i class="fas fa-info-circle mr-2"></i> Department: <br></span> {{project.department}}</p>
+        <p><i class="fas fa-info-circle mr-2"></i> Project Type: <br></span>{{project.projecttype}}</p>
+        <p><i class="fas fa-info-circle mr-2"></i> Project Title: <br></span>{{project.projecttitle}}</p>
+        <p><i class="fas fa-info-circle mr-2"></i> Statement of the problem: <br></span>{{project.statement}}</p>
+        <p><i class="fas fa-info-circle mr-2"></i> Aims: <br></span>{{project.aims}}</p>
+        <p><i class="fas fa-info-circle mr-2"></i> First Choice Supervisor: <br></span>{{project.first_choice_supervisor}}</p>
+        <p><i class="fas fa-info-circle mr-2"></i> Second Choice Supervisor: <br></span>{{project.second_choice_supervisor}}</p>
+        <p><i class="fas fa-info-circle mr-2"></i> Third Choice Supervisor: <br></span>{{project.third_choice_supervisor}}</p>
+        <p><i class="fas fa-info-circle mr-2"></i> Status: <br></span>
+        
+        {% if project.status == "Accepted" %}
+        <button class="btn btn-success">{{project.status}}</button>
+        {% elif project.status == "Review" %}
+        <button class="btn btn-info">{{project.status}}</button>
+        {% else %}
+        <button class="btn btn-danger">{{project.status}}</button>
+        {% endif %}
+
+        
+        
+        
+        </p>
+      </div>
+    </div>
+{% endfor %}
+{% else %}
+You do not have allocations yet
+{% endif %}
+
+
+    
+</div>
+
+{% endblock content %}
+  
